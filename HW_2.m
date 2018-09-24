@@ -58,9 +58,10 @@ view(az,el);
 
 
 % Solving for E field
-
-Ex = -diff(V)./0.05 ;   % 0.05 is difference between adjacent x and y values 
-Ey = -diff(V,1,2)./0.05;
+delta_x = diff(x);
+delta_y = diff(y);
+Ex = -diff(V)./delta_x(1); 
+Ey = -diff(V,1,2)./delta_y(1);
 xc = 0.5*conv2(x,[1,1],'valid');    % since the above equations solved for the average E field between adjacent
 yc = 0.5*conv2(y,[1,1],'valid');    % points, we need to take the avg. x and y positions between points 
 
@@ -107,9 +108,10 @@ zlabel('V(x,y)')
 
 
 % Solving for E field
-
-Ex = -diff(V)./0.05 ;   %taking difference in V down columns
-Ey  = -diff(V,1,2)./0.05;   %taking diff in V across rows 
+delta_x = diff(x);
+delta_y = diff(y);
+Ex = -diff(V)./delta_x(1);   %taking difference in V down columns
+Ey  = -diff(V,1,2)./delta_y(1);   %taking diff in V across rows 
 xc = 0.5*conv2(x,[1,1],'valid');
 yc = 0.5*conv2(y,[1,1],'valid');
 
