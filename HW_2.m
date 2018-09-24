@@ -90,10 +90,10 @@ z = 1;
 
 V = zeros(length(x),length(y));
 
-%Using MATLAB polar integral function to solve potential
+%Using MATLAB double integral function to solve potential
 for i = 1:length(x)
     for j = 1:length(y)
-        f = @ (theta,r) cos(theta).* r.^2./sqrt((x(i)-r.*cos(theta)).^2 + (y(j)-r.*sin(theta)).^2 + z.^2);
+        f = @ (r,theta) cos(theta).* r.^2./sqrt((x(i)-r.*cos(theta)).^2 + (y(j)-r.*sin(theta)).^2 + z.^2);
         V(i,j) = integral2(f,0,2,0,2*pi) ; 
     end    
 
